@@ -15,13 +15,16 @@ namespace GrillaDatos
 {
     public partial class Inicio : System.Web.UI.Page
     {
-        
+        NegocioDisco negocio = new NegocioDisco();
         protected void Page_Load(object sender, EventArgs e)
         {
-            NegocioDisco negocio = new NegocioDisco();
+            
             List<Disco> Lista = negocio.lista();
             dgvLista.DataSource = Lista;
             dgvLista.DataBind();
+            
+            
+            //lista prueba de gridview
             //List<Auto> Lista = new List<Auto>()
             //{
             //    new Auto()
@@ -49,12 +52,18 @@ namespace GrillaDatos
 
 
         }
+
+        protected void dgvLista_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvLista.PageIndex = e.NewPageIndex;
+            dgvLista.DataBind();
+        }
     }
-    public class Auto
-    {
-        public int Numero { get; set; }
-        public string Marca { get; set; }
-        public DateTime Lanzamiento { get; set; }
-        public string Color { get; set; }
-    }
+    //public class Auto
+    //{
+    //    public int Numero { get; set; }
+    //    public string Marca { get; set; }
+    //    public DateTime Lanzamiento { get; set; }
+    //    public string Color { get; set; }
+    //}
 }
