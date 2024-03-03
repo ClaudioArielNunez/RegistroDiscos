@@ -58,6 +58,11 @@ namespace GrillaDatos
             dgvLista.PageIndex = e.NewPageIndex;
             dgvLista.DataBind();
         }
+
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Formulario.aspx");
+        }
     }
     //public class Auto
     //{

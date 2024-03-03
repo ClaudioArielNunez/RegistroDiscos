@@ -7,7 +7,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h3 class="my-4 text-center">Grilla Principal</h3>
     <div class="mb-3">
-        <asp:Button Text="Agregar Nuevo" ID="btnCreate" CssClass="btn btn-success" runat="server" />
+        <asp:Button Text="Agregar Nuevo" ID="btnCreate" OnClick="btnCreate_Click" CssClass="btn btn-success" runat="server" />
     </div>
     <div class="mb-2 row">
         <div class="">
