@@ -30,7 +30,7 @@ namespace Datos
                         nuevo.Descripcion = (string)dr["Descripcion"];
                         lista.Add(nuevo);
                     }
-                    return lista; //TODO
+                    return lista; 
                 }
             }
             

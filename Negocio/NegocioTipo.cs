@@ -10,5 +10,20 @@ namespace Negocio
 {
     public class NegocioTipo
     {
+        DatosTipo datos = new DatosTipo();
+        List<TiposEdicion > listaEdicion = new List<TiposEdicion> ();
+
+        public List<TiposEdicion> listarTipos()
+        {
+            try
+            {
+                return datos.listar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

@@ -12,19 +12,32 @@ namespace GrillaDatos
     public partial class Formulario : System.Web.UI.Page
     {
         NegocioEstilo negocioEstilo = new NegocioEstilo();
-        List<Estilos> lista = new List<Estilos>();
+        NegocioTipo negocioEdicion = new NegocioTipo();
+        List<Estilos> listaEstilos = new List<Estilos>();
+        List<TiposEdicion> listaEdicion = new List<TiposEdicion>();
         protected void Page_Load(object sender, EventArgs e)
         {
             cargarEstilos();
+            cargarTipos();
+        }
+
+        private void cargarTipos()
+        {
+            listaEdicion = negocioEdicion.listarTipos();
+            ddlTipo.DataSource = listaEdicion;
+            ddlTipo.DataValueField = "Id";
+            ddlTipo.DataTextField = "Descripcion";
+            ddlTipo.DataBind();
         }
 
         private void cargarEstilos()
         {
-            lista = negocioEstilo.listarEstilos();
-            ddlEstilo.DataSource = lista;
+            listaEstilos = negocioEstilo.listarEstilos();
+            ddlEstilo.DataSource = listaEstilos;
             ddlEstilo.DataValueField = "Id";
             ddlEstilo.DataTextField = "Descripcion";
             ddlEstilo.DataBind();
         }
+
     }
 }
