@@ -61,7 +61,7 @@ namespace GrillaDatos
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Formulario.aspx");
+            Response.Redirect("~/Formulario.aspx?id=0");
         }
     }
     //public class Auto

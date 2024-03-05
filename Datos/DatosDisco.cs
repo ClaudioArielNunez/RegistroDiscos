@@ -52,5 +52,34 @@ namespace Datos
 
                 
         }
+
+        public bool crearDisco(Disco nuevo)
+        {
+            bool respuesta = false;
+            using (con)
+            {
+                using (SqlCommand cmd = new SqlCommand("storedAltaDisco",con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@titulo",nuevo.Titulo);
+                    cmd.Parameters.AddWithValue("@fecha",nuevo.FechaLanzamiento);
+                    cmd.Parameters.AddWithValue("@canciones",nuevo.CantidadCanciones);
+                    cmd.Parameters.AddWithValue("@imagen",nuevo.UrlImagenTapa);
+                    cmd.Parameters.AddWithValue("@estilo", nuevo.Estilo.Id);
+                    cmd.Parameters.AddWithValue("@edicion", nuevo.TipoEdicion.Id);
+
+                    con.Open();
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+
+                    if(filasAfectadas > 0)
+                    {
+                        respuesta = true;
+                    }
+                    //con.Close();
+                    return respuesta;
+                
+                }
+            }
+        }
     }
 }

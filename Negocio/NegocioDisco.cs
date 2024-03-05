@@ -24,5 +24,18 @@ namespace Negocio
                 throw ex; 
             }
         }
+
+        public bool altaDisco(Disco nuevo)
+        {
+            try
+            {
+                return disco.crearDisco(nuevo);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
