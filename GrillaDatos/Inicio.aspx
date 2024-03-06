@@ -16,8 +16,38 @@
             <asp:TextBox ID="txtFiltro" OnTextChanged="txtFiltro_TextChanged" AutoPostBack="true" CssClass="form-control" runat="server" />
         </div>
     </div>
+    <%--filtro avanzado--%>
+    <div class="mb-4 row">
+        <div class="col-3">
+            <asp:Label Text="Campo:" CssClass="form-label" runat="server" />
+            <asp:DropDownList OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged" AutoPostBack="true" ID="ddlCampo" CssClass="form-select" runat="server">
+                <asp:ListItem Text="Titulo" />
+                <asp:ListItem Text="Estilo" />
+                <asp:ListItem Text="Canciones" />
+            </asp:DropDownList>
+        </div>
+        <div class="col-3">
+            <asp:Label Text="Criterio" runat="server" />
+            <asp:DropDownList ID="ddlCriterio" CssClass="form-select" runat="server">
+            </asp:DropDownList>
+        </div>
+        <div class="col-3">
+            <asp:Label Text="Filtro:" runat="server" />
+            <asp:TextBox ID="txtFiltroAvanzado" CssClass="form-control" runat="server" />
+        </div>
+        <div class="col-3">
+            <asp:Label Text="Estado" runat="server" />
+            
+                <asp:DropDownList ID="ddlEstado" CssClass="form-select" runat="server">
+                    <asp:ListItem Text="Todos" />
+                    <asp:ListItem Text="Activo" />
+                    <asp:ListItem Text="Inactivo" />
+                </asp:DropDownList>
+            
+        </div>
+    </div>
+    <%--inicio grilla--%>
     <div class="mb-2 row">
-
         <div class="">
             <asp:GridView ID="dgvLista" AllowPaging="true" OnPageIndexChanging="dgvLista_PageIndexChanging" PageSize="10" AutoGenerateColumns="false" CssClass="table table-bordered table-hover" runat="server">
                 <Columns>

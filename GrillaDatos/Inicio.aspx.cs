@@ -73,6 +73,17 @@ namespace GrillaDatos
             dgvLista.DataSource= listaFiltrada;
             dgvLista.DataBind();
         }
+
+        protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlCriterio.Items.Clear();//limpia los items
+            if(ddlCampo.SelectedItem.ToString() == "Canciones")
+            {
+                ddlCriterio.Items.Add("Igual a");
+                ddlCriterio.Items.Add("Mayor a");
+                ddlCriterio.Items.Add("Menor a");
+            }
+        }
     }
     //public class Auto
     //{
