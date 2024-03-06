@@ -37,13 +37,17 @@
         </div>
         <div class="col-3">
             <asp:Label Text="Estado" runat="server" />
-            
-                <asp:DropDownList ID="ddlEstado" CssClass="form-select" runat="server">
-                    <asp:ListItem Text="Todos" />
-                    <asp:ListItem Text="Activo" />
-                    <asp:ListItem Text="Inactivo" />
-                </asp:DropDownList>
-            
+            <asp:DropDownList ID="ddlEstado" CssClass="form-select" runat="server">
+                <asp:ListItem Text="Todos" />
+                <asp:ListItem Text="Activo" />
+                <asp:ListItem Text="Inactivo" />
+            </asp:DropDownList>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 mb-3">
+            <asp:Button ID="btnBuscar" cssClass="btn btn-primary" Text="Buscar Disco" runat="server" />
+            <asp:Button ID="btnLimpiar" cssClass="btn btn-success" Text="Limpiar Resultados" runat="server" />
         </div>
     </div>
     <%--inicio grilla--%>
