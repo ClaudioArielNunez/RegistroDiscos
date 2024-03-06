@@ -15,11 +15,12 @@ namespace GrillaDatos
 {
     public partial class Inicio : System.Web.UI.Page
     {
-        NegocioDisco negocio = new NegocioDisco();
+        //NegocioDisco negocio = new NegocioDisco();//TENER ESTA LINEA AQUI ME DABA ERROR
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            NegocioDisco negocio = new NegocioDisco();
             List<Disco> Lista = negocio.lista();
+            //Session.Add("ListaDiscos", negocio.lista());
             dgvLista.DataSource = Lista;
             dgvLista.DataBind();
             
@@ -62,6 +63,15 @@ namespace GrillaDatos
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Formulario.aspx?id=0");
+        }
+
+        protected void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            NegocioDisco negocio = new NegocioDisco();
+            List<Disco> listaDisco = negocio.lista();
+            List<Disco> listaFiltrada = listaDisco.FindAll(x => x.Titulo.ToUpper().Contains(txtFiltro.Text.ToUpper()));
+            dgvLista.DataSource= listaFiltrada;
+            dgvLista.DataBind();
         }
     }
     //public class Auto
