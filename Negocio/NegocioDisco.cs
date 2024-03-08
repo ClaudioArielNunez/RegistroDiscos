@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades;
 using Datos;
+using System.Data.SqlClient;
 
 namespace Negocio
 {
@@ -30,6 +31,24 @@ namespace Negocio
             try
             {
                 return disco.crearDisco(nuevo);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<Disco> listaFiltrada(string campo, string criterio, string filtro, string estado)
+        {
+            try
+            {
+                return disco.Filtrar(campo,criterio,filtro,estado);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw ex;                
             }
             catch (Exception ex)
             {

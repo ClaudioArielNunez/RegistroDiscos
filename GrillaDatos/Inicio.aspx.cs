@@ -70,7 +70,8 @@ namespace GrillaDatos
             NegocioDisco negocio = new NegocioDisco();
             List<Disco> listaDisco = negocio.lista();
             List<Disco> listaFiltrada = listaDisco.FindAll(x => x.Titulo.ToUpper().Contains(txtFiltro.Text.ToUpper()));
-            dgvLista.DataSource= listaFiltrada;
+           
+            dgvLista.DataSource = listaFiltrada;
             dgvLista.DataBind();
         }
 
@@ -88,6 +89,23 @@ namespace GrillaDatos
                 ddlCriterio.Items.Add("Contiene");
                 ddlCriterio.Items.Add("Empieza con");
                 ddlCriterio.Items.Add("Termina con");
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                NegocioDisco negocio = new NegocioDisco();
+                List<Disco>ListaFiltrada = new List<Disco>();
+                ListaFiltrada = negocio.listaFiltrada(ddlCampo.Text, ddlCriterio.Text, txtFiltro.Text, ddlEstado.Text);
+                dgvLista.DataSource = ListaFiltrada;
+                dgvLista.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
     }
