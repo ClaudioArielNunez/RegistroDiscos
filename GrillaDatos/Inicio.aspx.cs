@@ -98,7 +98,7 @@ namespace GrillaDatos
             {
                 NegocioDisco negocio = new NegocioDisco();
                 List<Disco>ListaFiltrada = new List<Disco>();
-                ListaFiltrada = negocio.listaFiltrada(ddlCampo.Text, ddlCriterio.Text, txtFiltro.Text, ddlEstado.Text);
+                ListaFiltrada = negocio.listaFiltrada(ddlCampo.Text, ddlCriterio.Text, txtFiltroAvanzado.Text, ddlEstado.Text);
                 dgvLista.DataSource = ListaFiltrada;
                 dgvLista.DataBind();
             }
