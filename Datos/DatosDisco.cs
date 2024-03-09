@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades;
 using System.Data;
+using System.IO;
 
 namespace Datos
 {
@@ -82,7 +83,7 @@ namespace Datos
             }
         }
 
-        public List<Disco> Filtrar(string campo, string criterio, string filtro, string estado)
+        public List<Disco> Filtrar(string campo, string criterio, string estado, string filtro="")
         {
             List<Disco> ListaFiltrada = new List<Disco>();
 
@@ -90,6 +91,7 @@ namespace Datos
             string consulta = "SELECT D.Id as IdDisco, Titulo, FechaLanzamiento, CantidadCanciones, Estado, UrlImagenTapa, E.Id as IdEstilo, E.Descripcion AS Estilo, T.Id as IdTipo, T.Descripcion as Edicion from  DISCOS AS D INNER JOIN ESTILOS AS E ON D.IdEstilo = E.Id  INNER JOIN TIPOSEDICION AS T ON D.IdTipoEdicion = T.Id AND ";
             if (campo == "Canciones")
             {
+                
                 switch (criterio)
                 {
                     case "Igual a":
@@ -100,6 +102,48 @@ namespace Datos
                         break;
                     default:
                         consulta += " CantidadCanciones < " + filtro;
+                        break;
+                }
+            }
+            else if(campo == "Titulo")
+            {
+                switch (criterio)
+                {
+                    case "Contiene":
+                        consulta += " Titulo like '%" + filtro + "%' ";
+                        break;
+                    case "Empieza con":
+                        consulta += " Titulo like '" + filtro + "%'";
+                        break;
+                    default:
+                        consulta += " Titulo like '%" + filtro + "' ";
+                        break;
+                }
+            }
+            else if (campo == "Estilo")
+            {
+                switch (criterio)
+                {
+                    case "Pop Punk":
+                        consulta += " E.Descripcion = 'Pop Punk' ";
+                            break;
+                    case "Pop":
+                        consulta += " E.Descripcion = 'Pop' ";
+                        break;
+                    case "Rock":
+                    consulta += " E.Descripcion = 'Rock' ";
+                        break;
+                    case "Reggae":
+                        consulta += " E.Descripcion = 'Reggae' ";
+                        break;
+                    case "Country":
+                        consulta += " E.Descripcion = 'Country' ";
+                        break;
+                    case "Electrónica":
+                        consulta += " E.Descripcion = 'Electrónica' ";
+                        break;
+                    default:
+                        consulta += " E.Descripcion = 'Heavy Metal' ";
                         break;
                 }
             }

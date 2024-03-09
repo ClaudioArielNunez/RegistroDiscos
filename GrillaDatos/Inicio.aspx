@@ -23,6 +23,7 @@
             <asp:DropDownList OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged" AutoPostBack="true" ID="ddlCampo" CssClass="form-select" runat="server">
                 <asp:ListItem Text="Titulo" />
                 <asp:ListItem Text="Estilo" />
+                <asp:ListItem Text="Edicion" />
                 <asp:ListItem Text="Canciones" />
             </asp:DropDownList>
         </div>
@@ -32,7 +33,7 @@
             </asp:DropDownList>
         </div>
         <div class="col-3">
-            <asp:Label Text="Filtro:" runat="server" />
+            <asp:Label ID="txtLblFiltro" Text="Filtro:" runat="server" />
             <asp:TextBox ID="txtFiltroAvanzado" CssClass="form-control" runat="server" />
         </div>
         <div class="col-3">

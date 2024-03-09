@@ -39,7 +39,7 @@ namespace Negocio
             }
         }
 
-        public List<Disco> listaFiltrada(string campo, string criterio, string filtro, string estado)
+        public List<Disco> listaFiltrada(string campo, string criterio, string estado, string filtro = "")
         {
             try
             {

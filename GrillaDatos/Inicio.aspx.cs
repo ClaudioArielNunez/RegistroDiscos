@@ -78,17 +78,42 @@ namespace GrillaDatos
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlCriterio.Items.Clear();//limpia los items
-            if(ddlCampo.SelectedItem.ToString() == "Canciones")
+            if (ddlCampo.SelectedItem.ToString() == "Canciones")
             {
+                txtLblFiltro.Visible = true;
+                txtFiltroAvanzado.Visible = true;
                 ddlCriterio.Items.Add("Igual a");
                 ddlCriterio.Items.Add("Mayor a");
                 ddlCriterio.Items.Add("Menor a");
             }
-            else
+            else if (ddlCampo.SelectedItem.ToString() == "Titulo")
             {
+                txtLblFiltro.Visible = true;
+                txtFiltroAvanzado.Visible = true;
                 ddlCriterio.Items.Add("Contiene");
                 ddlCriterio.Items.Add("Empieza con");
                 ddlCriterio.Items.Add("Termina con");
+            }
+            else if(ddlCampo.SelectedItem.ToString() == "Estilo")
+            {
+                txtLblFiltro.Visible = false;
+                txtFiltroAvanzado.Visible= false;
+                ddlCriterio.Items.Add("Pop Punk");
+                ddlCriterio.Items.Add("Pop");
+                ddlCriterio.Items.Add("Rock");
+                ddlCriterio.Items.Add("Reggae");
+                ddlCriterio.Items.Add("Country");
+                ddlCriterio.Items.Add("Electrónica");
+                ddlCriterio.Items.Add("Heavy Metal");
+            }
+            else
+            {
+                txtLblFiltro.Visible = false;
+                txtFiltroAvanzado.Visible = false;
+                ddlCriterio.Items.Add("Vinilo");
+                ddlCriterio.Items.Add("CD");
+                ddlCriterio.Items.Add("Tape");
+                ddlCriterio.Items.Add("OnDemand");
             }
         }
 
