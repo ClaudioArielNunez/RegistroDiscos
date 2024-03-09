@@ -86,17 +86,14 @@ namespace Datos
         {
             List<Disco> ListaFiltrada = new List<Disco>();
 
-            
-            string consulta = "SELECT D.Id, Titulo, FechaLanzamiento, CantidadCanciones, Estado, UrlImagenTapa, " +
-                              "E.Id, E.Descripcion AS Estilo, T.Id, T.Descripcion as Edicion\r\nfrom " +
-                              "DISCOS AS D INNER JOIN ESTILOS AS E\r\nON D.IdEstilo = E.Id\r\nINNER JOIN " +
-                              "TIPOSEDICION AS T\r\nON D.IdTipoEdicion = T.Id AND ";
+
+            string consulta = "SELECT D.Id as IdDisco, Titulo, FechaLanzamiento, CantidadCanciones, Estado, UrlImagenTapa, E.Id as IdEstilo, E.Descripcion AS Estilo, T.Id as IdTipo, T.Descripcion as Edicion from  DISCOS AS D INNER JOIN ESTILOS AS E ON D.IdEstilo = E.Id  INNER JOIN TIPOSEDICION AS T ON D.IdTipoEdicion = T.Id AND ";
             if (campo == "Canciones")
             {
                 switch (criterio)
                 {
                     case "Igual a":
-                        consulta += " CantidadCanciones = " + filtro; //TODO
+                        consulta += " CantidadCanciones = " + filtro; 
                         break;
                     case "Mayor a":
                         consulta += " CantidadCanciones > " + filtro;
@@ -130,8 +127,10 @@ namespace Datos
 
                     while (dr.Read())
                     {
+                        //Los datos entre [] deben ser traidos en la consulta SQL, evitar nombres repetidos como Id
+                        //que suelen estar repetidos en tablas, en ese caso usamos alias ej: Idtipo
                         Disco nuevo = new Disco();
-                        nuevo.Id = int.Parse(dr["Id"].ToString());
+                        nuevo.Id = int.Parse(dr["IdDisco"].ToString());
                         nuevo.Titulo = dr["Titulo"].ToString();
                         nuevo.FechaLanzamiento = Convert.ToDateTime(dr["FechaLanzamiento"]);
                         nuevo.CantidadCanciones = int.Parse(dr["CantidadCanciones"].ToString());
@@ -139,11 +138,11 @@ namespace Datos
                         nuevo.Estado = (bool)dr["Estado"];
 
                         nuevo.Estilo = new Estilos();
-                        nuevo.Estilo.Id = int.Parse(dr["Id"].ToString());
+                        nuevo.Estilo.Id = int.Parse(dr["IdEstilo"].ToString());
                         nuevo.Estilo.Descripcion = dr["Estilo"].ToString();
 
                         nuevo.TipoEdicion = new TiposEdicion();
-                        nuevo.TipoEdicion.Id = int.Parse(dr["Id"].ToString());
+                        nuevo.TipoEdicion.Id = int.Parse(dr["IdTipo"].ToString());
                         nuevo.TipoEdicion.Descripcion = dr["Edicion"].ToString();
 
                         ListaFiltrada.Add(nuevo);

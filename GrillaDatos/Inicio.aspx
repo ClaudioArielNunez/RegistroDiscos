@@ -56,10 +56,13 @@
         <div class="">
             <asp:GridView ID="dgvLista" AllowPaging="true" OnPageIndexChanging="dgvLista_PageIndexChanging" PageSize="10" AutoGenerateColumns="false" CssClass="table table-bordered table-hover" runat="server">
                 <Columns>
+                    <%--<asp:BoundField HeaderText="Id disco" DataField="Id" />--%>
                     <asp:BoundField HeaderText="Titulo Del disco" DataField="Titulo" />
                     <asp:BoundField HeaderText="Lanzamiento" DataField="FechaLanzamiento" />
                     <asp:BoundField HeaderText="Canciones" DataField="CantidadCanciones" />
+                    <%--<asp:BoundField HeaderText="Id Estilo" DataField="Estilo.Id" />--%>
                     <asp:BoundField HeaderText="Estilo" DataField="Estilo.Descripcion" />
+                    <%--<asp:BoundField HeaderText="Id Edición" DataField="TipoEdicion.Id" />--%>
                     <asp:BoundField HeaderText="Edición" DataField="TipoEdicion.Descripcion" />
                     <asp:CheckBoxField HeaderText="Estado" DataField="Estado" />
                     <asp:TemplateField HeaderText="Acciones - CRUD">
