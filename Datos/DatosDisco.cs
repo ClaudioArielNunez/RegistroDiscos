@@ -147,6 +147,24 @@ namespace Datos
                         break;
                 }
             }
+            else
+            {
+                switch (criterio)
+                {
+                    case "Vinilo":
+                        consulta += " T.Descripcion = 'Vinilo' ";
+                        break;
+                    case "CD":
+                        consulta += " T.Descripcion = 'CD' ";
+                        break;
+                    case "Tape":
+                        consulta += " T.Descripcion = 'Tape' ";
+                        break;
+                    default:
+                        consulta += " T.Descripcion = 'OnDemand' ";
+                        break;
+                }
+            }
 
             if (estado == "Activo")
             {
