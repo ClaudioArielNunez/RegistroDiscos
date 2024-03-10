@@ -146,6 +146,22 @@ namespace GrillaDatos
                 txtFiltro.Enabled =true;
             }
         }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtFiltroAvanzado.Text = "";
+                NegocioDisco negocio = new NegocioDisco();
+                dgvLista.DataSource = negocio.lista();
+                dgvLista.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex);
+            }
+        }
     }
     //public class Auto
     //{
