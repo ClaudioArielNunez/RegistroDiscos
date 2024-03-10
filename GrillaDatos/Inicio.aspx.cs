@@ -80,24 +80,25 @@ namespace GrillaDatos
             ddlCriterio.Items.Clear();//limpia los items
             if (ddlCampo.SelectedItem.ToString() == "Canciones")
             {
-                txtLblFiltro.Visible = true;
-                txtFiltroAvanzado.Visible = true;
+                //txtLblFiltro.Visible = true;
+                txtFiltroAvanzado.Enabled = true;
                 ddlCriterio.Items.Add("Igual a");
                 ddlCriterio.Items.Add("Mayor a");
                 ddlCriterio.Items.Add("Menor a");
             }
             else if (ddlCampo.SelectedItem.ToString() == "Titulo")
             {
-                txtLblFiltro.Visible = true;
-                txtFiltroAvanzado.Visible = true;
+                
+                txtFiltroAvanzado.Enabled = true;
                 ddlCriterio.Items.Add("Contiene");
                 ddlCriterio.Items.Add("Empieza con");
                 ddlCriterio.Items.Add("Termina con");
             }
             else if(ddlCampo.SelectedItem.ToString() == "Estilo")
             {
-                txtLblFiltro.Visible = false;
-                txtFiltroAvanzado.Visible= false;
+                
+                txtFiltroAvanzado.Enabled = false;
+                //txtFiltroAvanzado.Visible= false;
                 ddlCriterio.Items.Add("Pop Punk");
                 ddlCriterio.Items.Add("Pop");
                 ddlCriterio.Items.Add("Rock");
@@ -108,8 +109,8 @@ namespace GrillaDatos
             }
             else
             {
-                txtLblFiltro.Visible = false;
-                txtFiltroAvanzado.Visible = false;
+
+                txtFiltroAvanzado.Enabled = false;
                 ddlCriterio.Items.Add("Vinilo");
                 ddlCriterio.Items.Add("CD");
                 ddlCriterio.Items.Add("Tape");
@@ -131,6 +132,18 @@ namespace GrillaDatos
             {
                 Session.Add("Error", ex);
                 Response.Redirect("Error.aspx");
+            }
+        }
+
+        protected void chkAvanzado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAvanzado.Checked)
+            {
+                txtFiltro.Enabled = false;
+            }
+            else
+            {
+                txtFiltro.Enabled =true;
             }
         }
     }

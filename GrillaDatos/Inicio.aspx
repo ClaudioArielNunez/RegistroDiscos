@@ -12,12 +12,21 @@
     </div>
     <div class="mb-2 row ">
         <div class="mb-2 col-4">
-            <asp:Label CssClass="form-label" Text="Filtrado por Título" runat="server" />
+            <asp:Label ID="lblFiltro" CssClass="form-label" Text="Filtrado por Título" runat="server" />
             <asp:TextBox ID="txtFiltro" OnTextChanged="txtFiltro_TextChanged" AutoPostBack="true" CssClass="form-control" runat="server" />
         </div>
+        <div class="mb-2 col-4">
+            <label class="form-label">Filtro Avanzado:</label>
+            <br />
+            <asp:CheckBox ID="chkAvanzado" OnCheckedChanged="chkAvanzado_CheckedChanged" AutoPostBack="true" runat="server" />
+        </div>
     </div>
+
     <%--filtro avanzado--%>
-    <div class="mb-4 row">
+    <%if (chkAvanzado.Checked)
+        { %>
+
+       <div class="mb-4 row">
         <div class="col-3">
             <asp:Label Text="Campo:" CssClass="form-label" runat="server" />
             <asp:DropDownList OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged" AutoPostBack="true" ID="ddlCampo" CssClass="form-select" runat="server">
@@ -44,14 +53,15 @@
                 <asp:ListItem Text="Inactivo" />
             </asp:DropDownList>
         </div>
-    </div>
-    
-    <div class="row">
+       </div>
+
+       <div class="row">
         <div class="col-3 mb-3">
             <asp:Button ID="btnBuscar" OnClick="btnBuscar_Click" CssClass="btn btn-primary" Text="Buscar Disco" runat="server" />
-            <asp:Button ID="btnLimpiar" cssClass="btn btn-success" Text="Limpiar Resultados" runat="server" />
+            <asp:Button ID="btnLimpiar" CssClass="btn btn-success" Text="Limpiar Resultados" runat="server" />
         </div>
-    </div>
+      </div>
+    <%} %>
     <%--inicio grilla--%>
     <div class="mb-2 row">
         <div class="">
